@@ -1,7 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { useState, useEffect } from 'react';
+import Modal from './components/modal';
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className="App">
       <header className="App-header">
@@ -11,13 +15,15 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          style={{ cursor: "pointer" }}
+         onClick={() => setShowModal(true)}
         >
-          Learn React
+          Launch Modal
         </a>
       </header>
+     {
+        showModal ? <Modal className="fade-up" toggleModal={setShowModal} /> : null
+     }
     </div>
   );
 }
