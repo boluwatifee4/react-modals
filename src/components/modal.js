@@ -21,6 +21,8 @@ const Modal = ({ toggleModal }) => {
                     </footer>
                 </div>
             </div>
+
+            
         </div>
     );
 }

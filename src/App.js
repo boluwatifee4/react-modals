@@ -6,6 +6,7 @@ import Modal from './components/modal';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
+  const [showDivModal, setShowDivModal] = useState(false);
   return (
     <div className="App">
       <header className="App-header">
@@ -16,14 +17,33 @@ function App() {
         <a
           className="App-link"
           style={{ cursor: "pointer" }}
-         onClick={() => setShowModal(true)}
+          onClick={() => setShowModal(true)}
         >
-          Launch Modal
+          Launch component Modal
         </a>
+        <a  className="App-link"
+          style={{ cursor: "pointer" }} onClick={() => setShowDivModal(true)} >Launch Div Modal</a>
       </header>
-     {
+      {
         showModal ? <Modal className="fade-up" toggleModal={setShowModal} /> : null
-     }
+      }
+     
+      <div>
+
+        {showDivModal ? (
+          <div className="modal">
+            <div className="modal-content">
+              <div className="close">
+                <span className="close-btn" onClick={() => setShowDivModal(false)}>
+                  &times;
+                </span>
+              </div>
+              <h1>Modal</h1>
+              <p>Modal content</p>
+            </div>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }
