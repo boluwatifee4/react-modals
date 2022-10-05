@@ -14,7 +14,7 @@ code {
 
 /* modal; */
 
-.modal {
+/* .modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -68,6 +68,6 @@ code {
     100% {
         transform: scale(1);
     }
-}
+} */
 
 

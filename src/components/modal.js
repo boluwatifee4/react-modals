@@ -1,30 +1,30 @@
 import React from "react";
 
-const Modal = ({ toggleModal }) => {
+const Modal = ({ id }) => {
     return (
-        <div>
-            <div className="modal">
-                <div className="modal-content">
-                    <header>
-                        <div className="close">
-                            <span className="close-btn" onClick={() =>    toggleModal(false)}>
-                                &times;
-                            </span>
+
+        <>
+            <div className="modal fade" id={id} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <h1>Modal Title</h1>
-                    </header>
-                    <body>
-                        <p>Modal content</p>
-                    </body>
-                    <footer>
-                        <button onClick={() => toggleModal(false)}>Close</button>
-                    </footer>
+                        <div className="modal-body">
+                            ...
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            
-        </div>
+        </>
     );
-}
+};
 
 export default Modal;

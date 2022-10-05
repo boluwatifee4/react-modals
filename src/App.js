@@ -1,12 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import { useState, useEffect } from 'react';
 import Modal from './components/modal';
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-  const [showDivModal, setShowDivModal] = useState(false);
   return (
     <div className="App">
       <header className="App-header">
@@ -14,38 +11,36 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          style={{ cursor: "pointer" }}
-          onClick={() => setShowModal(true)}
-        >
-          Launch component Modal
-        </a>
-        <a  className="App-link"
-          style={{ cursor: "pointer" }} onClick={() => setShowDivModal(true)} >Launch Div Modal</a>
-      </header>
-      {
-        showModal ? <Modal className="fade-up" toggleModal={setShowModal} /> : null
-      }
-     
-      <div>
+        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Launch demo component modal
+        </button>
+        <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#exampleDivModal">
+          Launch demo div modal
+        </button>
 
-        {showDivModal ? (
-          <div className="modal">
-            <div className="modal-content">
-              <div className="close">
-                <span className="close-btn" onClick={() => setShowDivModal(false)}>
-                  &times;
-                </span>
-              </div>
-              <h1>Modal</h1>
-              <p>Modal content</p>
+      </header>
+      <Modal className="fade-up" id={"exampleModal"} />
+
+      <div className="modal fade" id="exampleDivModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            ...
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        ) : null}
-      </div>
-    </div>
+    </div> 
   );
 }
-
 export default App;
