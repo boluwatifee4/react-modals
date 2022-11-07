@@ -1,26 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Modal from './components/modal';
 
 function App() {
   const targetEl = document.getElementById('defaultModal');
   const targetDivEl =  document.getElementById('defaultModalDiv');
+  const [view, setView] = React.useState('hidden');
+  useEffect(() => {
+
+   
+
+  }, [targetDivEl, targetEl]);
+ 
   // open and hide modaal
   const openModal = () => {
-    targetEl.classList.remove('hidden');
+    targetEl?.classList.remove('hidden');
+    setView('block');
   };
 
   const openDivModal = () => {
-    targetDivEl.classList.remove('hidden');
+    targetDivEl?.classList.remove('hidden');
   };
 
   const closeModal = () => {
-    targetEl.classList.add('hidden');
+    targetEl?.classList.add('hidden');
   };
 
   const closeDivModal = () => {
-    targetDivEl.classList.add('hidden');
+    targetDivEl?.classList.add('hidden');
   };
 
   return (
@@ -31,12 +39,18 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <button
-          onClick={openModal}
+          onClick={() => {
+            openModal();
+          }}
           className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal">
           Toggle Component modal
         </button>
         <button
-          onClick={openDivModal}
+          onClick={
+            () => {
+              openDivModal();
+            }
+          }
           className="block my-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModalDiv">
           Toggle Div modal
         </button>
@@ -52,7 +66,7 @@ function App() {
 
       {/* Modal div */}
 
-      <div id="defaultModalDiv" tabIndex="-1" aria-hidden="true" className={`hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full`}>
+      <div id="defaultModalDiv" tabIndex="-1" aria-hidden="true" className={`${view} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full`}>
                 <div className="relative p-4 w-full max-w-2xl h-full md:h-auto">
                     {/* Modal content  */}
                     <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
